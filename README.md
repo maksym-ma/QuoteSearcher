@@ -1,2 +1,2 @@
 Readme
-ssd
+ssdgit push origin mas
