@@ -83,7 +83,7 @@ def text_overlay(image_path, quotedata):
     )
 
     my_image = my_image.convert("RGB")
-    my_image.save('result.jpg')
+    #my_image.save('result.jpg')
 
     img_byte_arr = io.BytesIO()
     my_image.save(img_byte_arr, format='jpeg')

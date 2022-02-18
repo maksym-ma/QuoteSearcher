@@ -13,10 +13,10 @@ def init_routing(api, app):
     @app.route('/publish', methods=['post', 'get'])
     def front_form():
         #time.sleep(random.randint(60, 300))
-
+        print("publish initiated")
         images = gu.list_bucket_objects("images_clean_source")
 
-        for x in range(0, 1):
+        for x in range(0, 2):
             # print(x)
             time.sleep(10)
             # quotedata = bu.get_random_quote()
