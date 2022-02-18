@@ -12,7 +12,7 @@ import instagram.client as ic
 def init_routing(api, app):
     @app.route('/publish', methods=['post', 'get'])
     def front_form():
-        time.sleep(random.randint(60, 300))
+        #time.sleep(random.randint(60, 300))
 
         images = gu.list_bucket_objects("images_clean_source")
 
@@ -33,7 +33,7 @@ def init_routing(api, app):
 
         images_to_post = gu.list_bucket_objects("images_ready_to_post")
         for im in images_to_post:
-            time.sleep(random.randint(60, 75))
+            time.sleep(random.randint(15, 30))
             media = insta_client.create_media(im)
 
             insta_client.post_media(media)
