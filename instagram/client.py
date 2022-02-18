@@ -1,6 +1,13 @@
 import os
 import requests
 import json
+from urllib.parse import unquote
+import gcs.utils as gu
+import bigquery.utils as bu
+import image_edit.utils as ieu
+import random
+import sys
+import time
 
 if not os.environ.get("access_token"):
     import config
@@ -10,7 +17,6 @@ class Instagram:
     access_token = os.environ.get("access_token") if os.environ.get("access_token") else config.access_token
     base_url = "https://graph.facebook.com/v13.0/"
     insta_account_id = "17841452169613325"
-    print(access_token)
 
     def __init__(self):
         pass
@@ -23,7 +29,7 @@ class Instagram:
 
         payload = {
             'image_url': 'https://storage.googleapis.com/images_manual/5h63wk.jpg' if image_location is None else image_location,
-            'caption': 'Testing some API stuff' if caption is None else caption,
+            'caption': unquote(image_location.split('/')[-1].split('.')[0]) if caption is None else caption,
             'access_token': self.access_token
         }
         r = requests.post(post_url, data=payload)
@@ -44,9 +50,3 @@ class Instagram:
             print(r.text)
         else:
             print('Created media could not be parsed')
-
-
-insta_client = Instagram()
-media = insta_client.create_media()
-print(media)
-insta_client.post_media(media)

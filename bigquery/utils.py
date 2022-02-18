@@ -27,8 +27,8 @@ def get_random_quote():
         "tags": [""]
     }
     for row in results:
-        quote_data["quote"] = '\n'.join(textwrap.wrap(re.sub(' +', ' ', row.Quote).strip(" "), len(row.Quote)/2 + 5))
+        quote_data["quote"] = '\n'.join(textwrap.wrap(re.sub(' +', ' ', row.Quote).strip(" "), 35))
         quote_data["author"] = re.sub(' +', ' ', row.Author).strip(" ")
-        quote_data["tags"] = [re.sub(' +', ' ', i).strip(" ") for i in list(set(row.Tags))[:5]]
+        quote_data["tags"] = "#" + "#".join([re.sub(' +', ' ', i).strip(" ") for i in list(set(row.Tags))[:5]]).lower()
 
     return quote_data
