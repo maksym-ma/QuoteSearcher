@@ -1,5 +1,6 @@
-from google.cloud import storage
 import urllib.parse
+
+from google.cloud import storage
 
 
 def list_bucket_objects(bucket_name):

@@ -1,24 +1,14 @@
-import datetime
-import sys
-import time
-import os
-import requests
-import json
-from urllib.parse import unquote
-import gcs.utils as gu
-import bigquery.utils as bu
-import image_edit.utils as ieu
-import instagram.client as ic
 import random
 import sys
 import time
 
-from flask import request
-import logging
+import bigquery.utils as bu
+import gcs.utils as gu
+import image_edit.utils as ieu
+import instagram.client as ic
 
 
 def init_routing(api, app):
-
     @app.route('/publish', methods=['post', 'get'])
     def front_form():
         time.sleep(random.randint(60, 300))

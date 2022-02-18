@@ -2,6 +2,7 @@ import os
 
 from flask import Flask
 from flask_restful import Api
+
 import routing as r
 
 app = Flask(__name__)

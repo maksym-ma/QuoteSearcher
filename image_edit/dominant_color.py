@@ -1,12 +1,12 @@
 from __future__ import print_function
-import binascii
-import struct
-from PIL import Image
+
+import urllib.request
+
 import numpy as np
 import scipy
-import scipy.misc
 import scipy.cluster
-import urllib.request
+import scipy.misc
+from PIL import Image
 
 
 def get_dom_color(image_path):
@@ -14,7 +14,7 @@ def get_dom_color(image_path):
     urllib.request.urlretrieve(image_path, "tmp.jpg")
 
     im = Image.open("tmp.jpg")
-    im = im.resize((150, 150))      # optional, to reduce time
+    im = im.resize((150, 150))  # optional, to reduce time
     ar = np.asarray(im)
     shape = ar.shape
     ar = ar.reshape(scipy.product(shape[:2]), shape[2]).astype(float)

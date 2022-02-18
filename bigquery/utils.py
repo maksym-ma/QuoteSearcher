@@ -1,6 +1,7 @@
-from google.cloud import bigquery
-import textwrap
 import re
+import textwrap
+
+from google.cloud import bigquery
 
 
 def get_random_quote():
