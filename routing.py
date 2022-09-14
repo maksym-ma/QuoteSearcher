@@ -46,7 +46,6 @@ def init_routing(api, app):
         logging.info("Bucket cleaned")
         return "published"
 
-
     @app.route('/', methods=['post', 'get'])
-    def front_form():
+    def main():
         return "main page"
