@@ -2,6 +2,7 @@ import random
 import sys
 import time
 import logging
+import traceback
 
 import bigquery.utils as bu
 import gcs.utils as gu
@@ -13,11 +14,11 @@ def init_routing(api, app):
     @app.route('/publish', methods=['post', 'get'])
     def front_form():
         #time.sleep(random.randint(60, 300))
-        print("publish initiated")
+        logging.info("publish initiated")
         images = gu.list_bucket_objects("images_clean_source")
 
         for x in range(0, 2):
-            # print(x)
+            logging.info(f"Image iteration {x}")
             time.sleep(10)
             # quotedata = bu.get_random_quote()
             # ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
@@ -26,8 +27,9 @@ def init_routing(api, app):
                 quotedata = bu.get_random_quote()
                 ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
                 logging.info("Image generated")
-            except:
-                logging.error(sys.exc_info())
+            except Exception as e:
+                logging.info("Image generation failed")
+                logging.error(f"{sys.exc_info()} -> {traceback.format_exc(e)}")
 
         insta_client = ic.Instagram()
 
