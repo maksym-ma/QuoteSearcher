@@ -45,3 +45,8 @@ def init_routing(api, app):
         gu.clean_bucket("images_ready_to_post")
         logging.info("Bucket cleaned")
         return "published"
+
+
+    @app.route('/', methods=['post', 'get'])
+    def front_form():
+        return "main page"
