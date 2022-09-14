@@ -25,7 +25,7 @@ def init_routing(api, app):
             try:
                 quotedata = bu.get_random_quote()
                 ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
-                logging.info("Image generated")
+                logging.info("Image  generated")
             except:
                 logging.error(sys.exc_info())
 
