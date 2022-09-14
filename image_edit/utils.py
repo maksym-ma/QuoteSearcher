@@ -33,7 +33,7 @@ def text_overlay(image_path, quotedata):
     overlay = Image.new('RGBA', my_image.size, (tr, tr, tr) + (0,))
     draw = ImageDraw.Draw(overlay)  # Create a context for drawing things on it.
     draw.rectangle(((llx, lly), (urx, ury)), fill=(tr, tr, tr) + (80,))
-    draw.rectangle(((lx, ly), (ux, uy)), fill=(tr, tr, tr) + (80,))
+    draw.rectangle(((lx, ly), (ux, uy)), fill=(tr, tr, tr) + (50,))
 
     my_image = Image.alpha_composite(my_image, overlay)
 
