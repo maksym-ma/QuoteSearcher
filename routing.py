@@ -13,6 +13,9 @@ def init_routing(api, app):
     @app.route('/publish', methods=['post', 'get'])
     def front_form():
         #time.sleep(random.randint(60, 300))
+
+        import sys
+        sys.stdout.flush()
         print("publish initiated")
         images = gu.list_bucket_objects("images_clean_source")
 
@@ -41,4 +44,7 @@ def init_routing(api, app):
 
         gu.clean_bucket("images_ready_to_post")
         logging.info("Bucket cleaned")
+
+        import sys
+        sys.stdout.flush()
         return "published"
