@@ -2,7 +2,6 @@ import random
 import sys
 import time
 import logging
-import traceback
 
 import bigquery.utils as bu
 import gcs.utils as gu
@@ -29,8 +28,7 @@ def init_routing(api, app):
                 ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
                 logging.info("Image generated")
             except Exception as e:
-                logging.info("Image generation failed")
-                logging.error(f"{sys.exc_info()} -> {traceback.format_exc(e)}")
+                logging.info(f"Image generation failed {e}")
 
         insta_client = ic.Instagram()
 
