@@ -15,6 +15,7 @@ def init_routing(api, app):
     def front_form():
         #time.sleep(random.randint(60, 300))
         logging.info("publish initiated")
+        print("publish initiated")
         images = gu.list_bucket_objects("images_clean_source")
 
         for x in range(0, 2):
