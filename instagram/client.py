@@ -43,5 +43,8 @@ class Instagram:
             r = requests.post(post_url, data=payload)
             print('--------Just posted to Instagram--------')
             print(r.text)
+            return r
         else:
             print('Created media could not be parsed')
+
+

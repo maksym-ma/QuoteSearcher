@@ -39,12 +39,12 @@ def init_routing(api, app):
             time.sleep(random.randint(15, 30))
             media = insta_client.create_media(im)
 
-            insta_client.post_media(media)
+            r = insta_client.post_media(media)
             logging.info("Image posted")
 
         gu.clean_bucket("images_ready_to_post")
         logging.info("Bucket cleaned")
-        return "published"
+        return r
 
     @app.route('/', methods=['post', 'get'])
     def main():
