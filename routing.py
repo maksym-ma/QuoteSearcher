@@ -16,7 +16,7 @@ def init_routing(api, app):
         logging.info("publish initiated")
         print("publish initiated")
         images = gu.list_bucket_objects("images_clean_source")
-
+        print("images received")
         for x in range(0, 2):
             logging.info(f"Image iteration {x}")
             time.sleep(10)
@@ -27,11 +27,13 @@ def init_routing(api, app):
                 quotedata = bu.get_random_quote()
                 ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
                 logging.info("Image generated")
+                print("Image generated")
             except Exception as e:
                 logging.info(f"Image generation failed {e}")
+                raise e
 
         insta_client = ic.Instagram()
-
+        print("Insta client created")
         images_to_post = gu.list_bucket_objects("images_ready_to_post")
         for im in images_to_post:
             time.sleep(random.randint(15, 30))
