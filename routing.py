@@ -27,10 +27,14 @@ def init_routing(api, app):
 
             try:
                 quotedata = bu.get_random_quote()
+                print(quotedata)
                 ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
                 logging.info("Image  generated")
-            except:
+                print("Image  generated")
+            except Exception as e:
+                print(sys.exc_info())
                 logging.error(sys.exc_info())
+                raise e
 
         insta_client = ic.Instagram()
 

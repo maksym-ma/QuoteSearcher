@@ -8,6 +8,7 @@ import image_edit.dominant_color as ie
 
 
 def text_overlay(image_path, quotedata):
+    print(image_path)
     urllib.request.urlretrieve(image_path, "tmp.jpg")
 
     domcol = ie.get_dom_color(image_path)
