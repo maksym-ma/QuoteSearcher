@@ -12,7 +12,6 @@ import instagram.client as ic
 def init_routing(api, app):
     @app.route('/publish', methods=['post', 'get'])
     def front_form():
-        #time.sleep(random.randint(60, 300))
 
         import sys
         sys.stdout.flush()
@@ -20,34 +19,28 @@ def init_routing(api, app):
         images = gu.list_bucket_objects("images_clean_source")
 
         for x in range(0, 2):
-            # print(x)
             time.sleep(10)
-            # quotedata = bu.get_random_quote()
-            # ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
-
             try:
                 quotedata = bu.get_random_quote()
                 print(quotedata)
                 ieu.text_overlay(images[random.randint(0, len(images) - 1)], quotedata)
-                logging.info("Image  generated")
                 print("Image  generated")
             except Exception as e:
                 print(sys.exc_info())
-                logging.error(sys.exc_info())
                 raise e
 
         insta_client = ic.Instagram()
-
+        print("Client created")
         images_to_post = gu.list_bucket_objects("images_ready_to_post")
         for im in images_to_post:
             time.sleep(random.randint(15, 30))
             media = insta_client.create_media(im)
-
+            print(f"Media created {media}")
             insta_client.post_media(media)
-            logging.info("Image posted")
+            print("Image posted")
 
         gu.clean_bucket("images_ready_to_post")
-        logging.info("Bucket cleaned")
+        print("Bucket cleaned")
 
         import sys
         sys.stdout.flush()
